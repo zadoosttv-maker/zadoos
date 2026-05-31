@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Soul-Link Overlay · HOLY-Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Press+Start+2P&family=VT323&family=Bebas+Neue&family=Russo+One&family=Audiowide&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+</head>
+<body>
+
+<!-- =========================================================
+     SETTINGS-PANEL (links eingefahren – Zahnrad zum Öffnen)
+     ========================================================= -->
+<button id="settings-toggle" type="button" title="Einstellungen">⚙</button>
+
+<aside id="settings-panel" class="settings-panel">
+    <header>
+        <h2>⚙ Overlay anpassen</h2>
+        <button id="settings-close" type="button">✕</button>
+    </header>
+
+    <section>
+        <h3>Export</h3>
+        <label class="row"><span>Hintergrund mit exportieren</span><input type="checkbox" id="export-with-bg"></label>
+        <button class="btn-primary" id="export-png">📥 Overlay als PNG herunterladen</button>
+        <p class="hint">Speichert 1920×1080 PNG. In OBS als <b>Bild-Quelle</b> einfügen. Nach Änderungen einfach neu exportieren.</p>
+    </section>
+
+    <section>
+        <h3>Bearbeitung</h3>
+        <label class="row"><span>Edit-Modus (Drag &amp; Resize)</span><input type="checkbox" id="edit-mode-toggle"></label>
+        <button class="btn-secondary" id="reset-layout">↺ Layout zurücksetzen</button>
+        <p class="hint">Edit-Modus an: Element ziehen zum Verschieben, gelben Griff unten-rechts ziehen zum Skalieren. Shift = proportional.</p>
+    </section>
+
+    <section>
+        <h3>Logo &amp; Titel</h3>
+        <label class="row"><span>Logo-Text</span><input type="text" id="logo-text" value="HOLY" maxlength="6"></label>
+        <label class="row"><span>Eigenes Logo-Bild</span><input type="file" id="logo-upload" accept="image/*"></label>
+        <button class="btn-secondary" id="logo-clear">🗑 Logo-Bild entfernen</button>
+        <label class="row"><span>Logo-Farbe</span><input type="color" id="logo-color" value="#ffd23a"></label>
+    </section>
+
+    <section>
+        <h3>Header-Zähler</h3>
+        <label class="row"><span>Run-Label</span><input type="text" id="run-label" value="RUN:"></label>
+        <label class="row"><span>Run-Wert</span><input type="text" id="run-value" value="04"></label>
+        <label class="row"><span>Cap-Label</span><input type="text" id="cap-label" value="Lv. Cap"></label>
+        <label class="row"><span>Cap-Wert</span><input type="text" id="cap-value" value="31"></label>
+        <label class="row"><span>Best-Label</span><input type="text" id="best-label" value="Best:"></label>
+        <label class="row"><span>Best-Wert</span><input type="text" id="best-value" value="-"></label>
+        <label class="row"><span>Header anzeigen</span><input type="checkbox" id="show-header" checked></label>
+    </section>
+
+    <section>
+        <h3>Spieler-Namen</h3>
+        <label class="row"><span>Spieler 1</span><input type="text" id="player1-name" placeholder="Spieler 1"></label>
+        <label class="row"><span>Spieler 2</span><input type="text" id="player2-name" placeholder="Spieler 2"></label>
+        <label class="row"><span>Namen anzeigen</span><input type="checkbox" id="show-names" checked></label>
+    </section>
+
+    <section>
+        <h3>Team-Grid (Soul-Link Paare)</h3>
+        <label class="row"><span>Anzahl Paare</span>
+            <select id="pair-count">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6" selected>6</option>
+            </select>
+        </label>
+        <label class="row"><span>Team-Grid anzeigen</span><input type="checkbox" id="show-team" checked></label>
+        <label class="row"><span>Grid-Hintergrund</span><input type="checkbox" id="team-bg" checked></label>
+        <p class="hint">Klick auf einen Slot im Edit-Modus = Pokémon-Bild hochladen oder leeren.</p>
+    </section>
+
+    <section>
+        <h3>Cam-Boxen (unten)</h3>
+        <label class="row"><span>Facecam 1 anzeigen</span><input type="checkbox" id="show-cam1" checked></label>
+        <label class="row"><span>Facecam 2 anzeigen</span><input type="checkbox" id="show-cam2" checked></label>
+        <label class="row"><span>Chat-Box anzeigen</span><input type="checkbox" id="show-chat" checked></label>
+        <label class="row"><span>Chat-Transparenz <output id="chat-opacity-val">70%</output></span>
+            <input type="range" id="chat-opacity" min="0" max="100" value="70"></label>
+    </section>
+
+    <section>
+        <h3>Farben</h3>
+        <label class="row"><span>Akzent 1 (Spieler 1)</span><input type="color" id="accent1" value="#4ea8ff"></label>
+        <label class="row"><span>Akzent 2 (Spieler 2)</span><input type="color" id="accent2" value="#ff5c7a"></label>
+        <label class="row"><span>Rahmen</span><input type="color" id="frame-color" value="#1a1a2e"></label>
+        <label class="row"><span>Header-Hintergrund</span><input type="color" id="header-bg" value="#0d0d18"></label>
+    </section>
+
+    <section>
+        <h3>Schrift</h3>
+        <label class="row"><span>Display-Schrift</span>
+            <select id="font-display">
+                <option value="'Orbitron', sans-serif">Orbitron</option>
+                <option value="'Press Start 2P', monospace" selected>Press Start 2P</option>
+                <option value="'VT323', monospace">VT323</option>
+                <option value="'Bebas Neue', sans-serif">Bebas Neue</option>
+                <option value="'Russo One', sans-serif">Russo One</option>
+                <option value="'Audiowide', sans-serif">Audiowide</option>
+            </select>
+        </label>
+        <label class="row"><span>Body-Schrift</span>
+            <select id="font-body">
+                <option value="'Rajdhani', sans-serif" selected>Rajdhani</option>
+                <option value="'Orbitron', sans-serif">Orbitron</option>
+                <option value="'VT323', monospace">VT323</option>
+                <option value="'Bebas Neue', sans-serif">Bebas Neue</option>
+            </select>
+        </label>
+    </section>
+
+    <section>
+        <h3>Hintergrund</h3>
+        <label class="row"><span>Eigenes Bild (1920×1080)</span><input type="file" id="bg-upload" accept="image/*"></label>
+        <button class="btn-secondary" id="bg-clear">🗑 Bild entfernen</button>
+        <label class="row"><span>Helligkeit <output id="bg-bright-val">100%</output></span>
+            <input type="range" id="bg-bright" min="20" max="180" value="100"></label>
+        <label class="row"><span>Fallback-Farbe</span><input type="color" id="bg-color" value="#6fb5e4"></label>
+    </section>
+
+    <section>
+        <h3>Beschriftungen</h3>
+        <label class="row"><span>Platzhalter-Texte ausblenden</span><input type="checkbox" id="hide-labels"></label>
+        <p class="hint">Versteckt "FACECAM 1", "CHAT" usw. damit deine OBS-Quellen sauber drüber passen.</p>
+    </section>
+</aside>
+
+<!-- =========================================================
+     OVERLAY (1920×1080)
+     ========================================================= -->
+<div class="overlay-wrapper">
+<div class="overlay" id="overlay">
+
+    <!-- Hintergrund-Layer (nur für Export sichtbar wenn aktiv) -->
+    <div class="bg-layer" id="bg-layer"></div>
+
+    <!-- === HEADER === -->
+    <div class="header-bar" data-draggable="header-bar" id="header-bar">
+        <div class="logo-circle" id="logo-circle">
+            <span class="logo-text" id="logo-display">HOLY</span>
+        </div>
+        <div class="header-pills">
+            <div class="pill"><span class="pill-label" id="run-label-display">RUN:</span><span class="pill-value" id="run-value-display">04</span></div>
+            <div class="pill"><span class="pill-label" id="cap-label-display">Lv. Cap</span><span class="pill-value" id="cap-value-display">31</span></div>
+        </div>
+        <div class="header-best">
+            <span class="pill-label" id="best-label-display">Best:</span>
+            <span class="pill-value" id="best-value-display">-</span>
+        </div>
+    </div>
+
+    <!-- === SPIELER-NAMEN (über den Cams) === -->
+    <div class="player-tag tag-left" data-draggable="player1-tag" id="player1-tag">
+        <span class="tag-dot"></span><span id="player1-display">SPIELER 1</span>
+    </div>
+    <div class="player-tag tag-right" data-draggable="player2-tag" id="player2-tag">
+        <span id="player2-display">SPIELER 2</span><span class="tag-dot"></span>
+    </div>
+
+    <!-- === TEAM-GRID (zentral, 2 Spalten Pokémon-Paare) === -->
+    <div class="team-grid-box" data-draggable="team-grid" id="team-grid">
+        <div class="team-col team-col-left" id="team-col-1"></div>
+        <div class="team-col team-col-right" id="team-col-2"></div>
+    </div>
+
+    <!-- === FACECAMS + CHAT (unten) === -->
+    <div class="cam-box cam-left" data-draggable="cam1" id="cam1">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="cam-placeholder"><span class="cam-dot-live"></span><span class="placeholder">FACECAM 1</span></div>
+    </div>
+
+    <div class="chat-box" data-draggable="chat" id="chat">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="chat-header"><span class="chat-dot"></span><span class="chat-title">LIVE CHAT</span><span class="chat-dot"></span></div>
+        <div class="chat-content"><span class="placeholder">CHAT-QUELLE HIER PLATZIEREN</span></div>
+    </div>
+
+    <div class="cam-box cam-right" data-draggable="cam2" id="cam2">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="cam-placeholder"><span class="cam-dot-live"></span><span class="placeholder">FACECAM 2</span></div>
+    </div>
+
+</div>
+</div>
+
+<input type="file" id="slot-upload" accept="image/*" style="display:none">
+
+<script src="script.js"></script>
+</body>
+</html>

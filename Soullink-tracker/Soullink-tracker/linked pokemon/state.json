@@ -1,0 +1,176 @@
+{
+  "players": [
+    {
+      "box": [
+        {
+          "de": "Saganabyss",
+          "id": 368,
+          "lvl": 6,
+          "nick": "Saganabyss",
+          "pid": 3580094528
+        },
+        {
+          "de": "Sumpex",
+          "id": 260,
+          "lvl": 5,
+          "nick": "Sumpex",
+          "pid": 2362571341
+        },
+        {
+          "de": "Dragoran",
+          "id": 149,
+          "lvl": 8,
+          "nick": "Dragoran",
+          "pid": 268511114
+        },
+        {
+          "de": "Zigzachs",
+          "id": 263,
+          "lvl": 7,
+          "nick": "Zigzachs",
+          "pid": 3090489840
+        }
+      ],
+      "name": "Spieler 1",
+      "team": [
+        {
+          "id": 149,
+          "de": "Dragoran",
+          "nick": "Dragoran",
+          "lvl": 10,
+          "pid": 268511114
+        },
+        {
+          "id": 17,
+          "de": "Tauboga",
+          "nick": "Tauboga",
+          "lvl": 5,
+          "pid": 3184827581
+        },
+        {
+          "id": 357,
+          "de": "Tropius",
+          "nick": "Tropius",
+          "lvl": 4,
+          "pid": 4014306960
+        },
+        {
+          "id": 181,
+          "de": "Ampharos",
+          "nick": "Ampharos",
+          "lvl": 6,
+          "pid": 1086242
+        }
+      ],
+      "tot": [
+        {
+          "de": "Machomei",
+          "id": 68,
+          "lvl": 8,
+          "nick": "Machomei",
+          "pid": 2469372965
+        },
+        {
+          "de": "Nockchan",
+          "id": 107,
+          "lvl": 5,
+          "nick": "Nockchan",
+          "pid": 4270373479
+        },
+        {
+          "de": "Rattikarl",
+          "id": 20,
+          "lvl": 6,
+          "nick": "Rattikarl",
+          "pid": 1859770048
+        }
+      ]
+    },
+    {
+      "box": [
+        {
+          "de": "Mewtu",
+          "id": 150,
+          "lvl": 5,
+          "nick": "Mewtu",
+          "pid": 2432217419
+        },
+        {
+          "de": "Nidoran♂",
+          "id": 32,
+          "lvl": 6,
+          "nick": "Nidoran♂",
+          "pid": 3712871164
+        },
+        {
+          "de": "Onix",
+          "id": 95,
+          "lvl": 7,
+          "nick": "Onix",
+          "pid": 3784725503
+        },
+        {
+          "de": "Nidoqueen",
+          "id": 31,
+          "lvl": 9,
+          "nick": "Nidoqueen",
+          "pid": 2475454178
+        },
+        {
+          "de": "Zigzachs",
+          "id": 263,
+          "lvl": 7,
+          "nick": "Zigzachs",
+          "pid": 2459843965
+        }
+      ],
+      "name": "Spieler 2",
+      "team": [
+        {
+          "id": 31,
+          "de": "Nidoqueen",
+          "nick": "Nidoqueen",
+          "lvl": 15,
+          "pid": 2475454178
+        },
+        {
+          "id": 99,
+          "de": "Kingler",
+          "nick": "Kingler",
+          "lvl": 8,
+          "pid": 2644669606
+        },
+        {
+          "id": 303,
+          "de": "Flunkifer",
+          "nick": "Flunkifer",
+          "lvl": 4,
+          "pid": 4075460175
+        },
+        {
+          "id": 348,
+          "de": "Armaldo",
+          "nick": "Armaldo",
+          "lvl": 6,
+          "pid": 1406194903
+        }
+      ],
+      "tot": [
+        {
+          "de": "Wielie",
+          "id": 346,
+          "lvl": 9,
+          "nick": "Wielie",
+          "pid": 2364180578
+        },
+        {
+          "de": "Meganie",
+          "id": 154,
+          "lvl": 5,
+          "nick": "Meganie",
+          "pid": 2084383730
+        }
+      ]
+    }
+  ]
+}
